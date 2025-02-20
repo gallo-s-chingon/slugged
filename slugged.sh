@@ -1,7 +1,7 @@
 #!/bin/bash
 #: Name        : slugged
 #: Date        : 2025-02-20
-#: Author      : gallo-s-chingon, adapted from Benjamin Linton's slugify with the help of stackoverflow, ChatGPT, Perplexity and Grok
+#: Author      : gallo-s-chingon, adapted from Benjamin Linton's slugify with help from StackOverflow, ChatGPT, Perplexity, and Grok
 #: Version     : 0.1b
 #: Description : Convert filenames to a slug format: lowercase alphanumeric with single delimiters,
 #:               removing non-ASCII, punctuation, and emojis, preserving extensions.
@@ -33,8 +33,8 @@ slugify_file() {
     extension=""
   fi
 
-  # Convert to lowercase
-  result="${base_name,,}"
+  # Convert to lowercase using tr (portable alternative to ${var,,})
+  result=$(echo "$base_name" | tr '[:upper:]' '[:lower:]')
 
   # Replace all non-alphanumeric with delimiter
   result="${result//[^a-z0-9]/$delimiter}"
